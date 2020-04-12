@@ -11,4 +11,9 @@ class DataController extends Controller
         $data = "Ini Adalah Data";
         return response()->json($data, 200);
     }
+
+    public function dataAuth() {
+        $data = "Welcome " . Auth::user()->name;
+        return response()->json($data, 200);
+    }
 }
