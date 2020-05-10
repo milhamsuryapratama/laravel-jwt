@@ -23,3 +23,4 @@ Route::get('data', 'DataController@index');
 
 Route::get('dataall', 'DataController@dataAuth')->middleware('jwt.verify');
 Route::get('user', 'DataController@getAuthenticatedUser')->middleware('jwt.verify');
+Route::get('logout', 'Auth\LoginController@logout');
