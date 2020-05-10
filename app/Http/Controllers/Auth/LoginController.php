@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -81,5 +82,10 @@ class LoginController extends Controller
         $token = JWTAuth::fromUser($user);
 
         return response()->json(compact('user','token'),201);
+    }
+
+    public function logout(Request $request)
+    {
+        JWTAuth::invalidate(JWTAuth::getToken());
     }
 }
